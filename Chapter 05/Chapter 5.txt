@@ -1,0 +1,267 @@
+//Example 5.1
+empty_list = []
+empty_list
+int_list=[1,2,3,4]
+int_list
+string_list = ["abc","xyz"]
+string_list
+mixed_list = [1,2,"a","abc",1.0]
+mixed_list
+type(empty_list)
+type(int_list)
+
+//Example 5.2
+list = [1,2,3,4,5,6,7,8,9]
+list[1]
+list[5]
+list[9]
+list[-1]
+list[-3]
+list[-10]
+list[-9]
+list[2:5]
+list[-6:-3]
+list[:]
+list[:3]
+list[2:]
+list[-6:]
+list[:-3]
+list[5:10]
+list[::-1]
+list[2:5:-1]
+list[5:2:-1]
+
+//Example 5.3
+list = [1,2,3,4,5,6,7,8,9]
+for i in list:
+   print(i)
+
+//Example 5.4
+list = [1,2,3,4,5,6,7,8,9,10]
+list
+list.append("a")
+list
+list.insert(0,"b")
+list
+list.insert(5,"c")
+list
+
+//Example 5.5
+int_list = [1,2,3,4,5,6,1,2,3,4]
+int_list
+int_list.remove(1)
+int_list
+int_list.remove(5)
+int_list
+int_list.pop(3)
+int_list
+int_list.pop()
+int_list
+del int_list[3]
+int_list
+int_list.clear()
+int_list
+del int_list
+int_list
+
+//Example 5.6
+list = [1,2,3,4,5,6,1,2,3,4]
+if 6 in list:
+    print("6 is present in list")
+
+if 7 in list:
+    print("7 is present in list")
+else:
+    print("7 is not present in list")
+	
+for i in range(0,len(list)):
+    if list[i]==6:
+        print(i)
+
+list.index(1)
+list.index(2)
+list.index(6)
+list.pop(1)
+list.index(2)
+list
+list.remove(6)
+list
+list.index(6)
+list.index(1,2,7)
+list.index(1)
+list.index(1,2)
+list.index(1,7)
+
+//Example 5.7
+list = [1,2,3,4,5,6,1,2,3,4]
+list
+list.sort()
+list
+list.sort(reverse=True)
+list
+list = [1,2,3,4,5,6,1,2,3,4]
+list
+sorted_list = sorted(list)
+sorted_list
+list
+sorted_list = sorted(list, reverse=True)
+sorted_list
+list
+list = [1,2,3,4,5,6,1,2,3,4]
+string_list = ["c","a","b","xy","ab","dfg","abc"]
+string_list
+string_list.sort()
+string_list
+string_list.sort(key=len)
+string_list
+mixed_list = [1,2,”a","b","ab","abc","def"]
+mixed_list
+mixed_list.sort()
+mixed_list.sort(key=len)
+
+//Example 5.8
+list1 = [1,2,3,4]
+list2 = [2,3,4,5]
+list3 = list1+list2
+list3
+list4 = list2+list1
+list4
+list1.append(list2)
+list1
+list1 = [1,2,3,4]
+list2 = [2,3,4,5]
+list1.extend(list2)
+list1
+
+//Example 5.9
+list = [1,2,3,4,5,1,2,3,1,2,3,4,5]
+list
+list.count(1)
+list.count(4)
+list.count(6)
+
+//Example 5.10
+list = [1,2,3,4,5,1,2,3,1,2,3,4,5]
+list
+list.reverse()
+list
+list = ["a",1,"b",2]
+list.reverse()
+list
+
+//Example 5.11
+list1=[1,2]
+list1
+copy_list = list1.copy()
+copy_list
+copy_list.append(3)
+copy_list
+list1
+
+//Example 5.12
+list=[2, 'b', 1, 'a']
+list
+list[2] = "c"
+list
+list[4] = 4
+list[3] = 4
+list
+list[-1] = 0
+list
+
+//Example 5.13
+list=[2, 'b', 'c', 0]
+list
+list*2
+list
+list*4
+list*3
+
+//Example 5.14
+list=[2, 'b', 'c', 0]
+list
+len(list)
+list = [1,2,3,4,5,6,7,8,9]
+len(list)
+len(list[2:5])
+
+//Example 5.15
+int_list=[1,2,3]
+number_list=[1,2,3.5,4.6]
+int_list==number_list
+int_list==int_list
+int_list1=[1,2,3]
+int_list==int_list1
+int_list1=[1,3]
+int_list==int_list1
+int_list>int_list1
+int_list<int_list1
+int_list1=[1,1,3]
+int_list==int_list1
+int_list>int_list1
+int_list<int_list1
+mixed_list = [1,2,'a',"test"]
+int_list==mixed_list
+int_list<mixed_list
+mixed_list = [1,2,3,'a',"test"]
+int_list>mixed_list
+int_list<mixed_list
+
+//Example 5.16
+int_list = [1,2,3]
+number_list = [1,2,3.5,4.6]
+mixed_list = [1,2,'a','test']
+str_list = ['a','abc']
+max(int_list)
+min(int_list)
+max(number_list)
+min(number_list)
+max(mixed_list)
+min(mixed_list)
+max(str_list)
+min(str_list)
+
+//Example 5.17
+int_list = [5,8,3]
+int_list.sort()
+import bisect
+int_list
+bisect.insort(int_list,4)
+int_list
+bisect.bisect(int_list,7)
+int_list
+bisect.insort(int_list,7)
+int_list
+
+//Example 5.18
+help(list)
+
+//Answer 7
+def findPairs(list1, list2, sum):
+    for x in list1: 
+        for y in list2: 
+            if (x + y == sum): 
+                print([x, y])
+
+//Answer 8
+def reverseList(list, size):
+    n = len(list)
+    start = 0
+    while (start<n):
+        end = start + size
+        tempList = list[start:end]
+        tempList.reverse()
+        list[start:end] = tempList
+        start = start + size
+    print(list)
+
+//Answer 9
+def printNextGreater(list):
+    n = len(list)
+    for i in range(0, n):
+        next = None
+        for j in range(i+1, n):
+            if list[i] < list[j]:
+                next = list[j] 
+                break
+        print(str(list[i]) + " --> " + str(next))

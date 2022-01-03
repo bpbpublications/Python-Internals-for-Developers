@@ -1,0 +1,453 @@
+//Example 16.1
+class Calendar():
+    def __init__(self):
+        self.cal={'January':{'ndays':31,'events':{}}, 'February':{'ndays':28,'events':{}}, 'March':{'ndays':31,'events':{}}, 'April':{'ndays':30,'events':{}}, 'May':{'ndays':31,'events':{}}, 'June':{'ndays':30,'events':{}}, 'July':{'ndays':31,'events':{}}, 'August':{'ndays':31,'events':{}}, 'September':{'ndays':30,'events':{}}, 'October':{'ndays':31,'events':{}}, 'November':{'ndays':30,'events':{}}, 'December':{'ndays':31,'events':{}}}
+
+//Example 16.2
+class Calendar():
+    def __init__(self):
+        self.cal={'January':{'ndays':31,'events':{}}, 'February':{'ndays':28,'events':{}}, 'March':{'ndays':31,'events':{}}, 'April':{'ndays':30,'events':{}}, 'May':{'ndays':31,'events':{}}, 'June':{'ndays':30,'events':{}}, 'July':{'ndays':31,'events':{}}, 'August':{'ndays':31,'events':{}}, 'September':{'ndays':30,'events':{}}, 'October':{'ndays':31,'events':{}}, 'November':{'ndays':30,'events':{}}, 'December':{'ndays':31,'events':{}}}
+        self.weekDays=['Su','Mo','Tu','We','Th','Fr','Sa']
+    def printMonth(self,month,year,startDay):
+        dayIndex = self.weekDays.index(startDay)
+        days=self.cal.get(month).get('ndays')
+        if(month=='February'):
+            if(self.isLeapYear(year)):
+                days+=1
+        print(month,",",year)
+        print(''.join(['{0:<3}'.format(w) for w in self.weekDays]))
+        print('{0:<3}'.format('')*dayIndex, end='')
+        for day in range(1, days+1):
+            print('{0:<3}'.format(day), end='')
+            if ((dayIndex+day)%7==0):
+                print('\n')
+        print('\n')
+    def isLeapYear(self,year):
+        if year % 400 == 0:
+            return True
+        elif year % 100 == 0:
+            return False
+        elif year % 4 == 0:
+            return True
+        else:
+            return False
+
+newCal = Calendar()
+newCal.cal
+newCal.weekDays
+newCal.printMonth('September',2021,'We')
+newCal.printMonth('February',2021,'Mo')
+newCal.printMonth('February',2020,'Sa')
+
+
+//Example 16.3
+class Calendar():
+    def __init__(self):
+        self.cal={'January':{'ndays':31,'events':{}}, 'February':{'ndays':28,'events':{}}, 'March':{'ndays':31,'events':{}}, 'April':{'ndays':30,'events':{}}, 'May':{'ndays':31,'events':{}}, 'June':{'ndays':30,'events':{}}, 'July':{'ndays':31,'events':{}}, 'August':{'ndays':31,'events':{}}, 'September':{'ndays':30,'events':{}}, 'October':{'ndays':31,'events':{}}, 'November':{'ndays':30,'events':{}}, 'December':{'ndays':31,'events':{}}}
+        self.weekDays=['Su','Mo','Tu','We','Th','Fr','Sa']
+    def printMonth(self,month,year,startDay):
+        dayIndex = self.weekDays.index(startDay)
+        days=self.cal.get(month).get('ndays')
+        if(month=='February' and self.isLeapYear(year)):
+                days+=1
+        print(month,",",year)
+        print(''.join(['{0:<3}'.format(w) for w in self.weekDays]))
+        print('{0:<3}'.format('')*dayIndex, end='')
+        for day in range(1, days+1):
+            print('{0:<3}'.format(day), end='')
+            if ((dayIndex+day)%7==0):
+                print('\n')
+        print('\n')
+    def isLeapYear(self,year):
+        if year % 400 == 0:
+            return True
+        elif year % 100 == 0:
+            return False
+        elif year % 4 == 0:
+            return True
+        else:
+            return False
+    def printYear(self,year,startDay):
+        dayIndex=self.weekDays.index(startDay)
+        for month in self.cal.keys():
+            self.printMonth(month,year,self.weekDays[dayIndex])
+            dayIndex = (dayIndex + self.cal.get(month).get('ndays'))%7
+            if(month=='February' and self.isLeapYear(year)):
+                dayIndex=(dayIndex+1)%7
+
+newCal = Calendar()
+newCal.cal
+newCal.weekDays
+newCal.printYear(2021,'Fr')
+newCal.printYear(2020,'We')
+
+//Example 16.4
+class Calendar():
+    def __init__(self):
+        self.cal={'January':{'ndays':31,'events':{}}, 'February':{'ndays':28,'events':{}}, 'March':{'ndays':31,'events':{}}, 'April':{'ndays':30,'events':{}}, 'May':{'ndays':31,'events':{}}, 'June':{'ndays':30,'events':{}}, 'July':{'ndays':31,'events':{}}, 'August':{'ndays':31,'events':{}}, 'September':{'ndays':30,'events':{}}, 'October':{'ndays':31,'events':{}}, 'November':{'ndays':30,'events':{}}, 'December':{'ndays':31,'events':{}}}
+        self.weekDays=['Su','Mo','Tu','We','Th','Fr','Sa']
+    def printMonth(self,month,year,startDay):
+        dayIndex = self.weekDays.index(startDay)
+        days=self.cal.get(month).get('ndays')
+        if(month=='February' and self.isLeapYear(year)):
+                days+=1
+        print(month,",",year)
+        print(''.join(['{0:<3}'.format(w) for w in self.weekDays]))
+        print('{0:<3}'.format('')*dayIndex, end='')
+        for day in range(1, days+1):
+            print('{0:<3}'.format(day), end='')
+            if ((dayIndex+day)%7==0):
+                print('\n')
+        print('\n')
+    def isLeapYear(self,year):
+        if year % 400 == 0:
+            return True
+        elif year % 100 == 0:
+            return False
+        elif year % 4 == 0:
+            return True
+        else:
+            return False
+    def printYear(self,year,startDay):
+        dayIndex=self.weekDays.index(startDay)
+        for month in self.cal.keys():
+            self.printMonth(month,year,self.weekDays[dayIndex])
+            dayIndex = (dayIndex + self.cal.get(month).get('ndays'))%7
+            if(month=='February' and self.isLeapYear(year)):
+                dayIndex=(dayIndex+1)%7
+    def addEvent(self,date,month,eventDetails):
+        eventList = self.cal.get(month).get('events')
+        if date in eventList.keys():
+            eventList.get(date).append(eventDetails)
+        else:
+            eventList[date]=[eventDetails]
+    def getEventListForDate(self,date,month):
+        eventList = self.cal.get(month).get('events')
+        if(date in eventList):
+            print(eventList[date])
+        else:
+            print("No event for given date")
+    def getEventListForMonth(self,month):
+        print(self.cal.get(month).get('events'))
+    def getAllEventList(self):
+        for month in self.cal.keys():
+            print(month,"Event List:",self.cal.get(month).get('events'))
+
+newCal = Calendar()
+newCal.cal
+newCal.addEvent(6,'January','Birthday')
+newCal.addEvent(15,'August','Independence Day')
+newCal.addEvent(26,'January','Republic Day')
+newCal.addEvent(2,'October','Gandhi Jayanti')
+newCal.addEvent(31,'December','New Year Eve')
+newCal.addEvent(1,'January','New Year')
+newCal.getEventListForMonth('January')
+newCal.getEventListForMonth('August')
+newCal.getEventListForMonth('November')
+newCal.getEventListForMonth('December')
+newCal.getEventListForDate(2,'October')
+newCal.getEventListForDate(26,'October')
+newCal.getAllEventList()
+
+//Example 16.5
+map={'city1':{'city2':23,'city4':54},'city2':{'city1':23,'city3':34,'city4':78},'city3':{'city2':34,'city5':32},'city4':{'city1':54,'city2':78},'city5':{'city3':32}}
+map
+def addPath(city1,city2,distance):
+    map.get(city1)[city2]=distance
+    map.get(city2)[city1]=distance
+
+addPath('city1','city5',76)
+map
+def addCity(newCity):
+    map[newCity]={}
+
+addCity('city6')
+map
+addPath('city4','city6',45)
+map
+def modifyPath(city1,city2,distance):
+    map.get(city1)[city2]=distance
+    map.get(city2)[city1]=distance
+
+modifyPath('city6','city4',54)
+map
+def shortestPath(src,dest):
+    if(src not in map or dest not in map):
+        print("Source or destination not in map")
+        return
+    pathList={src:[None,0]}
+    currentCity = src
+    visited=[]
+    while currentCity!=dest:
+        visited.append(currentCity)
+        neighbouringCities=map.get(currentCity).keys()
+        currentDistance=pathList.get(currentCity)[1]
+        for nextCity in neighbouringCities:
+            distance = map.get(currentCity).get(nextCity) + currentDistance
+            if nextCity not in pathList:
+                pathList[nextCity]=[currentCity,distance]
+            else:
+                if pathList[nextCity][1] > distance:
+                    pathList[nextCity]=[currentCity,distance]
+        nextCities={}
+        for city in pathList:
+            if city not in visited:
+                nextCities[city] = pathList[city]
+        currentCity = min(nextCities, key = lambda k:nextCities[k][1])
+    path=[]
+    while currentCity!= None:
+        path.append(currentCity)
+        nextCity = pathList[currentCity][0]
+        currentCity = nextCity
+    print(path[::-1])
+
+shortestPath('city1','city6')
+modifyPath('city2','city4',1)
+map
+shortestPath('city1','city6')
+
+//Example 16.6
+map = [[0,23,0,54,0],
+       [23,0,34,78,0],
+       [0,34,0,0,32],
+       [54,78,0,0,0],
+       [0,0,32,0,0]]
+map
+def addPath(city1,city2,distance):
+    map[city1][city2]=distance
+    map[city2][city1]=distance
+
+addPath(0,4,76)
+map
+def addCity():
+    for list in map:
+        list.append(0)
+    list=[]
+    for i in range(0,len(map)+1):
+        list.append(0)
+    map.append(list)
+
+addCity()
+map
+def modifyPath(city1,city2,distance):
+    map[city1][city2]=distance
+    map[city2][city1]=distance
+
+modifyPath(5,3,54)
+map
+def shortestPath(src,dest):
+    pathList={src:[None,0]}
+    currentCity=src
+    visited=[]
+    while currentCity!=dest:
+        visited.append(currentCity)
+        neighbouringCities=[]
+        for i in range(0,len(map)):
+            if map[currentCity][i]>0:
+                neighbouringCities.append(i)
+        currentDistance=pathList.get(currentCity)[1]
+        for nextCity in neighbouringCities:
+            distance=map[currentCity][nextCity]+currentDistance
+            if nextCity not in pathList:
+                pathList[nextCity]=[currentCity,distance]
+            else:
+                if pathList[nextCity][1]>distance:
+                    pathList[nextCity]=[currentCity,distance]
+        nextCities={}
+        for city in pathList:
+            if city not in visited:
+                nextCities[city]=pathList[city]
+        currentCity=min(nextCities, key=lambda k:nextCities[k][1])
+    path=[]
+    while currentCity!=None:
+        path.append(currentCity)
+        nextCity=pathList[currentCity][0]
+        currentCity=nextCity
+    print(path[::-1])
+
+shortestPath(0,5)
+modifyPath(1,3,1)
+map
+shortestPath(0,5)
+
+//Example 16.7
+friendsNetwork={1:[2,3],2:[1,4],3:[1,7],4:[2,5,6],5:[4],6:[3,7],7:[3,6]}
+friendsNetwork
+def addUser(newUser):
+    friendsNetwork[newUser]=[]
+
+addUser(8)
+friendsNetwork
+def addNewFriend(user1,user2):
+    friendsNetwork[user1].append(user2)
+    friendsNetwork[user2].append(user1)
+
+addNewFriend(1,8)
+friendsNetwork
+def removeFriend(user1,user2):
+    friendsNetwork[user1].remove(user2)
+    friendsNetwork[user2].remove(user1)
+
+removeFriend(2,4)
+friendsNetwork
+def removeUser(user):
+    for friend in friendsNetwork[user]:
+        removeFriend(user,friend)
+    del friendsNetwork[user]
+
+removeUser(4)
+friendsNetwork
+def findMutualFriends(user1,user2):
+    friendSet1=set(friendsNetwork[user1])
+    friendSet2=set(friendsNetwork[user2])
+    friendSet=friendSet1.intersection(friendSet2)
+    print("Total mutual friends",len(friendSet))
+    print("Mutual Friends",friendSet)
+
+findMutualFriends(1,5)
+findMutualFriends(1,6)
+def searchFriendsOfFriend(user1,user2):
+    if user2 in friendsNetwork[user1]:
+        print("Friends of",user2,"are",friendsNetwork[user2])
+    else:
+        print("You are not friend of",user2)
+
+searchFriendsOfFriend(1,5)
+searchFriendsOfFriend(1,3)
+
+//Example 16.8
+friendsNetwork=[[0,1,1,0,0,0,0],
+                [1,0,0,1,0,0,0],
+                [1,0,0,0,0,0,1],
+                [0,1,0,0,1,1,0],
+                [0,0,0,1,0,0,0],
+                [0,0,1,0,0,0,1],
+                [0,0,1,0,0,1,0]]
+friendsNetwork
+def addUser(newUser):
+    for friendList in friendsNetwork:
+        friendList.append(0)
+    newUserList=[]
+    for i in range(0,len(friendsNetwork)+1):
+        newUserList.append(0)
+    friendsNetwork.append(newUserList)
+
+addUser(7)
+friendsNetwork
+def addNewFriend(user1,user2):
+    friendsNetwork[user1][user2] = 1
+    friendsNetwork[user2][user1] = 1
+
+addNewFriend(0,7)
+friendsNetwork
+def removeFriend(user1,user2):
+    friendsNetwork[user1][user2] = 0
+    friendsNetwork[user2][user1] = 0
+
+removeFriend(1,3)
+friendsNetwork
+def removeUser(user):
+    for friend in range(0,len(friendsNetwork[user])):
+        removeFriend(user,friend)
+
+removeUser(3)
+friendsNetwork
+def findMutualFriends(user1,user2):
+    friendSet=set()
+    for user in range(0,len(friendsNetwork[user1])):
+        if friendsNetwork[user1][user] == 1 and friendsNetwork[user2][user] == 1:
+            friendSet.add(user)
+    print("Total mutual friends",len(friendSet))
+    print("Mutual Friends",friendSet)
+
+findMutualFriends(0,4)
+findMutualFriends(0,5)
+def searchFriendsOfFriend(user1,user2):
+    if friendsNetwork[user1][user2] == 1:
+        friendList=[]
+        for user in range(0,len(friendsNetwork[user2])):
+            if friendsNetwork[user2][user] == 1:
+                friendList.append(user)
+        print("Friends of",user2,"are",friendList)
+    else:
+        print("You are not friend of",user2)
+
+searchFriendsOfFriend(0,4)
+searchFriendsOfFriend(0,2)
+
+//Example 16.9
+class Stack:
+    def __init__(self):
+        self.list = []
+    def isEmpty(self):
+        return len(self.list) == 0
+    def push(self,val):
+        self.list.append(val)
+    def pop(self):
+        return self.list.pop()
+    def peek(self):
+        return self.list[-1]
+    def get(self):
+        text=""
+        for i in range(0,len(self.list)):
+             text = text + " " + self.list[i]
+        return text.strip()
+    def setEmpty(self):
+        self.list=[]
+
+textData=Stack()
+redoText=Stack()
+def writeText(text):
+    textData.push(text)
+    if (redoText.isEmpty()==False):
+        redoText.setEmpty()
+
+def eraseText():
+    if(textData.isEmpty()):
+        return "Nothing to erase"
+    else:
+        redoText.push(textData.pop())
+
+def undo():
+    if(textData.isEmpty()):
+        return "Nothing to undo"
+    else:
+        redoText.push(textData.pop())
+
+def redo():
+    if(redoText.isEmpty()):
+        return "Nothing to redo"
+    else:
+        textData.push(redoText.pop())
+
+def print():
+    if(textData.isEmpty()):
+        return "Empty file"
+    else:
+        return textData.get()
+
+writeText("abc")
+print()
+writeText("def")
+print()
+eraseText()
+print()
+eraseText()
+print()
+eraseText()
+writeText("abc")
+writeText("def")
+writeText("ghi")
+print()
+undo()
+print()
+redo()
+print()
+undo()
+undo()
+print()
+redo()
+print()
+writeText("abc")
+print()
+redo()

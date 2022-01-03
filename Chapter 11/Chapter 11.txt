@@ -1,0 +1,226 @@
+//Example 11.1
+queue = []
+queue
+type(queue)
+def enqueue(queue, val):
+    queue.append(val)
+
+enqueue(queue,2)
+queue
+enqueue(queue,6)
+queue
+def getFront(queue):
+    return queue[0]
+
+getFront(queue)
+enqueue(queue,8)
+queue
+getFront(queue)
+def getRear(queue):
+    return queue[-1]
+
+getRear(queue)
+enqueue(queue,10)
+queue
+getRear(queue)
+def dequeue(queue):
+    return queue.pop(0)
+
+dequeue(queue)
+queue
+dequeue(queue)
+queue
+def isEmpty(queue):
+    return (len(queue)==0)
+
+isEmpty(queue)
+dequeue(queue)
+dequeue(queue)
+queue
+isEmpty(queue)
+class Queue:
+    def __init__(self):
+        self.list=[]
+    def isEmpty(self):
+        return len(self.list)==0
+    def enqueue(self,val):
+        self.list.append(val)
+    def dequeue(self):
+        return self.list.pop(0)
+    def getFront(self):
+        return self.list[0]
+    def getRear(self):
+        return self.list[-1]
+    def print(self):
+        return self.list
+
+q = Queue()
+q.print()
+q.isEmpty()
+q.enqueue(1)
+q.print()
+q.isEmpty()
+q.enqueue(2)
+q.print()
+q.getFront()
+q.getRear()
+q.enqueue(3)
+q.print()
+q.getRear()
+q.dequeue()
+q.print()
+q.getFront()
+
+//Example 11.2
+from collections import deque
+q = deque()
+q
+type(q)
+def enqueue(queue, val):
+    queue.append(val)
+
+enqueue(q,1)
+q
+enqueue(q,2)
+q
+def getFront(queue):
+    return queue[0]
+
+getFront(q)
+enqueue(q,3)
+getFront(q)
+def getRear(queue):
+    return queue[-1]
+
+getRear(q)
+enqueue(q,4)
+getRear(q)
+def dequeue(queue):
+    return queue.popleft()
+
+dequeue(q)
+q
+dequeue(q)
+q
+def isEmpty(queue):
+    return (len(queue)==0)
+
+isEmpty(q)
+dequeue(q)
+dequeue(q)
+q
+isEmpty(q)
+class Queue:
+    def __init__(self):
+        self.queue=deque()
+    def isEmpty(self):
+        return len(self.queue)==0
+    def enqueue(self,val):
+        self.queue.append(val)
+    def dequeue(self):
+        return self.queue.popleft()
+    def getFront(self):
+        return self.queue[0]
+    def getRear(self):
+        return self.queue[-1]
+    def print(self):
+        return self.queue
+
+q = Queue()
+q.print()
+q.isEmpty()
+q.enqueue(1)
+q.print()
+q.isEmpty()
+q.enqueue(2)
+q.print()
+q.getFront()
+q.getRear()
+q.enqueue(3)
+q.print()
+q.getFront()
+q.getRear()
+q.dequeue()
+q.print()
+q.dequeue()
+q.print()
+q.print()
+q.dequeue()
+q.isEmpty()
+q.print()
+
+//Example 11.3
+from queue import Queue
+q = Queue()
+q
+type(q)
+def enqueue(queue, val):
+    queue.put(val)
+
+enqueue(q,1)
+def getFront(queue):
+    return queue.get()
+
+getFront(q)
+enqueue(q,1)
+def dequeue(queue):
+    return queue.get()
+
+dequeue(q)
+def isEmpty(queue):
+    return queue.empty()
+
+isEmpty(q)
+enqueue(q,1)
+isEmpty(q)
+class Que:
+    def __init__(self):
+        self.queue=Queue()
+    def isEmpty(self):
+        return self.queue.empty()
+    def enqueue(self,val):
+        self.queue.put(val)
+    def dequeue(self):
+        return self.queue.get()
+    def getFront(self):
+        return self.queue.get()
+
+q = Que()
+q.isEmpty()
+q.enqueue(1)
+q.isEmpty()
+q.dequeue()
+q.isEmpty()
+q.enqueue(1)
+q.isEmpty()
+q.getFront()
+q.isEmpty()
+
+//Answer 1
+class Queue:
+     def __init__(self):
+         self.list = []
+     def isEmpty(self):
+         return len(self.list) == 0
+     def enqueue(self,val):
+         self.list.append(val)
+     def dequeue(self):
+         return self.list.pop(0)
+     def getFront(self):
+         return self.list[0]
+     def getRear(self):
+         return self.list[-1]
+     def print(self):
+         return self.list
+
+//Answer 2
+priority_queue = []
+priority_queue.append((4,'test1'))
+priority_queue.append((2,'test2'))
+priority_queue.append((5,'test3'))
+priority_queue.append((3,'test4'))
+priority_queue.append((1,'test4'))
+priority_queue
+priority_queue.sort(reverse=True)
+priority_queue
+

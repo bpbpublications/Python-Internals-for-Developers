@@ -1,0 +1,241 @@
+//Example 1.1
+//Figure 1.3
+py
+
+//Figure 1.4
+x=3
+print(x)
+
+//Figure 1.5
+exit()
+
+//Figure 1.6
+cd Desktop
+
+//Figure 1.7
+py test.py
+
+//Example 1.2
+pi = 3.14
+greeting = "hello"
+i = 0
+isFound = True
+
+//Example 1.3
+//Figure 1.9
+elif = 1
+nonlocal = 1
+raise=1
+
+//Example 1.4
+2+3
+3-2
+2*3
+5/2
+23%5
+2**4
+5//2
+
+//Example 1.5
+"hello "+"world"
+"abc"+"def"
+"a"*3
+"hello"*2
+
+//Example 1.6
+2==3
+"john"=="John"
+"john"!="John"
+2!=3
+2<3
+'a'<'b'
+'a'>'b'
+5>2
+2<=2
+5>=2
+
+//Example 1.7
+True and True
+True and False
+True or False
+False or False
+not (True)
+not (False)
+
+//Example 1.8
+name = "John"
+test = name
+name is test
+a = 20
+b = 20
+a is not b
+
+//Example 1.9
+'e' in 'hello'
+'z' in 'hello'
+'z' not in 'hello'
+'e' not in 'hello'
+
+//Example 1.10
+3&6
+3|6
+3^6
+~3
+3<<1
+3<<2
+6>>1
+6>>2 
+
+//Example 1.11
+x = 5 
+print(x)
+x+=2
+print(x)
+x-=5
+print(x)
+x*=3
+print(x)
+x/=2
+print(x)
+x%=2
+print(x)
+x=2
+x**=3
+print(x)
+x//=3
+print(x)
+x&=3
+print(x)
+x|=3
+print(x)
+x^=6
+print(x)
+x<<=2
+print(x)
+x>>=2
+print(x)
+
+//Example 1.12
+6-3+2*4/2
+((6-3) +2) *4/2
+
+//Example 1.13
+X
+5
+X=5
+X+=2
+2+3
+False
+X=True
+
+//Example 1.14
+x=10
+if(x%5==0): #Checks if x is divisible by 5
+   print (x,"is divisible by 5")
+   
+//Example 1.15
+x=10
+if(x%5==0):
+    print(x, "is divisible by 5")
+
+x=11
+if(x%5==0):
+    print(x, "is divisible by 5")
+
+if(x%5==0):
+    print("Checking if x is divisible by 5")
+    print(x, "is divisible by 5")
+
+//Example 1.16
+x=10
+if(x%5==0):
+    print(x, "is divisible by 5")
+else:
+    print(x, "is not divisible by 5")
+
+x=11
+if(x%5==0):
+    print(x, "is divisible by 5")
+else:
+    print(x, "is not divisible by 5")
+
+//Example 1.17
+x=10
+if(x==0):
+    print(x, "is 0")
+elif(x>0):
+    print(x, "is positive number")
+else:
+    print(x, "is negative number")
+
+//Example 1.18
+x=10
+if(x>=0):
+    if(x==0):
+        print(x, "is 0")
+    else:
+        print(x, "is positive number")
+else:
+    print(x, "is negative number")
+
+//Example 1.19
+n=10
+while(n>0):
+    print(n)
+    n = n-1
+
+//Example 1.20
+numbers = [1,2,3,4]
+for n in numbers: 
+    print(n) 
+
+//Example 1.21
+numbers = [1,2,3,4]
+for n in numbers:
+    if(n==2):
+        print("2 is present")
+        break
+		
+//Example 1.22
+numbers = [1,2,3,4]
+for n in numbers:
+    if(n%2!=0):
+        continue
+    print(n, "is even number")
+
+//Example 1.23
+def test(): #function definition
+    numbers = [1,2,3,4]
+    for n in numbers:
+        if(n%2!=0):
+            continue
+    print(n, "is even number")
+	
+test() #function call
+
+//Answer 10
+x=2020
+if(x%4==0):
+    if(x%100==0):
+        if(x%400==0):
+            print("Leap Year")
+        else:
+            print("Not a Leap Year")
+    else:
+        print("Leap Year")
+else:
+    print("Not a Leap Year")
+
+//Answer 11
+y=2
+sum=0
+for x in range(0,10):
+    sum+=y
+    y+=2
+
+print("Sum =", sum)
+
+//Answer 12
+def CtoF(celsius):
+    return (celsius*9/5)+32
+

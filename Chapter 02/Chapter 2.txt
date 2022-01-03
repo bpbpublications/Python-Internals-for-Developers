@@ -1,0 +1,179 @@
+//Example 2.1
+x=3
+i = 0
+negativeNumber=-7
+highestNumber=2147483647
+minNumber=-2147483648
+
+//Example 2.2
+x=-3
+abs(x)
+divmod(28,5)
+pow(2,3)
+
+//Example 2.3
+x=3
+type(x)
+isinstance(x,int)
+type(0)
+negativeNumber=-7
+type(negativeNumber)
+isinstance(negativeNumber,int)
+
+//Example 2.4
+x=3.0
+3e8
+-7.12
+4e-5
+-3e6
+-3e-7
+
+//Example 2.5
+x=3.1
+type(x)
+isinstance(x,float)
+isinstance(3,float)
+round(3.12345,2)
+round(3.12345)
+(0.5).as_integer_ratio()
+(1.2).as_integer_ratio()
+(1.0).is_integer()
+(0.5).is_integer()
+
+//Example 2.6
+x=2+7j
+8j
+
+//Example 2.7
+x=2+8j
+type(x)
+isinstance(x,complex)
+isinstance(3,complex)
+y=complex(1,2)
+y
+x.conjugate()
+abs(x)
+x.real
+x.imag
+x+y
+x-y
+x*y
+x/y
+pow(x,y)
+x**y
+x**2
+
+//Example 2.8
+"Hello"
+'World' 
+'''abc123'''
+"Hello 'World'!!!"
+'Hello "World"!!!'
+
+//Example 2.9
+str="Hello World!!"
+str[0]
+str[8]
+str[20]
+str[-1]
+str[-7]
+str[0:1]
+str[2:8]
+str[-8:-2]
+str[-20]
+str[-20:-8]
+str[8:20]
+str[:5]
+str[6:]
+str[:]
+str
+str[1]='d'
+str="check"
+str
+
+//Example 2.10
+print("Hello \\ World")
+print('Hello\'s World')
+print("Hello's World")
+print("Hello \"World\"")
+print('Hello "World"')
+print("Hello \a World")
+print("Hellos\b World")
+print("Hello \n World")
+print("Hello World\r")
+print("Hello World\rHow are you?")
+print("Hello \t World")
+print("Hello \v World")
+print("\u0051")
+print("\U00000051")
+print("\070")
+print("\x70")
+
+//Example 2.11
+'e' in 'Hello'
+'h' in 'Hello'
+'h' not in 'Hello'
+'e' not in 'Hello'
+str="123"
+for c in str:print(c)
+
+print(r'\n')
+
+"The sum of 10 + 20 is {0:o}".format(10+20)
+"The sum of 10 + 20 is {0:d}".format(10+20)
+"The sum of 10 + 20 is {0:x}".format(10+20)
+"The sum of 10 + 20 is {0:b}".format(10+20)
+
+//Example 2.12
+x=False
+y=True
+z=False
+x or y
+x or z
+x and y
+not (x)
+x^y
+y^True
+type(x)
+
+//Example 2.13
+x=None
+type(x)
+
+//Example 2.14
+import array as arr
+a=arr.array("I",[1,2])
+type(a)
+a[0]
+a[1]
+a[2]
+a[0:1]
+a[:]
+
+//Example 2.15
+x=[1,2]
+type(x)
+x[0]
+x[2]
+x[0:1]
+
+//Example 2.16
+x=(1,2)
+type(x)
+x[0]
+x[2]
+x[0:1]
+
+//Example 2.17
+x={1:'a',2:'b'}
+type(x)
+x[0]
+x[1]
+x.keys()
+x.values()
+
+//Example 2.18
+x=set('co1kdjs')
+x
+x=set("cookieeee111")
+x

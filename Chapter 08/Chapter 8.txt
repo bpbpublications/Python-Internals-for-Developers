@@ -1,0 +1,323 @@
+//Example 8.1
+empty_set = set()
+empty_set
+type(empty_set)
+empty_set = {}
+empty_set
+type(empty_set)
+test_set = {1,4,3,2}
+test_set
+type(test_set)
+test_set = {1,'b',3,'d'}
+test_set
+type(test_set)
+test_set = {1,2,{4,5}}
+
+//Example 8.2
+test_set = {1,2,3,4}
+test_set
+test_set[2]
+
+//Example 8.3
+test_set = {1,2,3,4}
+test_set
+for val in test_set:
+    print(val)
+
+//Example 8.4
+test_set = {1,2,3,4}
+test_set
+test_set.add("test")
+test_set
+test_set.add(2)
+test_set
+test_set.update([1,2,5,6])
+test_set
+test_set.update({'test', 'a'})
+test_set
+test_set.update({'1','2'})
+test_set
+test_set.update("testing")
+test_set
+test_set.update({8:'8',9:'9'})
+test_set
+test_set.update(1,2,5,6)
+
+//Example 8.5
+test_set = {1,2,3,4,5,6,7,8,9}
+test_set
+test_set.remove(2)
+test_set
+test_set.remove(2)
+test_set.discard(4)
+test_set
+test_set.discard(4)
+test_set.difference_update([1,2,3])
+test_set
+test_set.pop()
+test_set
+test_set.pop()
+test_set
+test_set.clear()
+test_set
+set()
+test_set.pop()
+test_set={1,2,3,4,5}
+test_set
+for val in list(test_set):
+    test_set.discard(val)
+
+test_set
+
+//Example 8.6
+test_set = {'a',1,'b',2}
+test_set
+1 in test_set
+1 not in test_set
+3 in test_set
+3 not in test_set
+'b' in test_set
+'bc' in test_set
+
+//Example 8.7
+test_set = {1,234,6786,23324,698778,2342345,67988,42343,3657856,3242345,665785,325423675,2345346,23453546,324564536}
+test_set
+sorted(test_set)
+sorted(test_set, reverse=True)
+test_set
+test_set = {232,5454,6767768,"sd","dgfg","aesrfed"}
+test_set
+sorted(test_set)
+
+//Example 8.8
+set1={1,2,3,4}
+set2={6,7,8,9}
+set1
+set2
+set1|set2
+set1
+set1.union(set2)
+set1
+set1|=set2
+set1
+set1={1,2,3,4}
+set1
+set1.update(set2)
+set1
+set3={2,3,9,10,23,56}
+set1|set3
+
+//Example 8.9
+test_set = {23,45,56,257,6,34557,678,344,56676}
+test_set
+reversed(test_set)
+
+//Example 8.10
+set1 = {1,2,3,4}
+set2 = set1
+set1
+set2
+set2.remove(3)
+set1
+set2
+set1.remove(4)
+set1
+set2
+set1 = {1,2,3,4}
+set2 = set.copy(set1)
+set1
+set2
+set1.remove(3)
+set1
+set2
+set2.remove(4)
+set1
+set2
+
+//Example 8.11
+set1 = {1,2,3,4}
+set2 = {4,3,2,1}
+set1*2
+set1*set2
+import itertools
+itertools.product(set1,set2)
+set(itertools.product(set1,set2))
+set(itertools.product(set1,set1))
+set(itertools.product(set1,set1,set2))
+set(itertools.product(set1))
+set(itertools.product())
+
+//Example 8.12
+test_set = {1,2,3,4}
+test_set
+len(test_set)
+
+//Example 8.13
+test_set = {1,2,3,4}
+test_set
+test_set1 = {1,2,3,4}
+test_set1
+test_set == test_set1
+test_set < test_set1
+test_set > test_set1
+test_set1 = {0,2,3,4}
+test_set1
+test_set == test_set1
+test_set < test_set1
+test_set > test_set1
+test_set1 = {1,2,3,'sd'}
+test_set1
+test_set == test_set1
+test_set < test_set1
+test_set > test_set1
+test_set1 = {2,3,4}
+test_set1
+test_set > test_set1
+test_set < test_set1
+test_set == test_set1
+
+//Example 8.14
+test_set = {1,3435,56,67,34}
+test_set
+max(test_set)
+min(test_set)
+test_set = {'ab', 'bc', 'ac', 'abc', 'a'}
+test_set
+max(test_set)
+min(test_set)
+test_set = {1,'c',2,'s'}
+test_set
+max(test_set)
+
+//Example 8.15
+test_set = {1,2,3}
+test_set
+str(test_set)
+
+//Example 8.16
+test_set = {1,2,3}
+all(test_set)
+test_set = {0,1,2,3}
+all(test_set)
+test_set = {1,2,False}
+all(test_set)
+test_set = {1,2,True}
+all(test_set)
+test_set = set()
+all(test_set)
+
+//Example 8.17
+test_set={0,1,0}
+any(test_set)
+test_set={0,0,0}
+any(test_set)
+test_set={True,False}
+any(test_set)
+test_set={False}
+any(test_set)
+test_set=set()
+any(test_set)
+
+//Example 8.18
+test_set = {1,2,3,4,5}
+sum(test_set)
+sum(test_set,20)
+
+//Example 8.19
+help(set)
+
+//Example 8.20
+test_set = {'a','b','c','d'}
+enumerate(test_set)
+set(enumerate(test_set))
+set(enumerate(test_set,20))
+
+//Example 8.21
+test_set1 = {1,2,3,4,5,6}
+test_set2 = {4,5,6,7,8,9}
+test_set1.union(test_set2)
+test_set1
+
+//Example 8.22
+test_set1 = {1,2,3,4,5,6}
+test_set2 = {4,5,6,7,8,9}
+test_set1.intersection(test_set2)
+test_set1
+test_set2
+test_set1 = {1,2,3,4,5}
+test_set2 = {'a','b','c','d'}
+test_set1.intersection(test_set2)
+
+//Example 8.23
+test_set1 = {1,2,3,4,5,6}
+test_set2 = {4,5,6,7,8,9}
+test_set1.difference(test_set2)
+test_set2.difference(test_set1)
+test_set1.symmetric_difference(test_set2)
+test_set2.symmetric_difference(test_set1)
+test_set1.difference(test_set1)
+test_set1.symmetric_difference(test_set1)
+
+//Example 8.24
+test_set1 = {1,2,3,4,5}
+test_set2 = {1,2,3}
+test_set1.issubset(test_set2)
+test_set2.issubset(test_set1)
+test_set1.issuperset(test_set2)
+test_set2.issuperset(test_set1)
+test_set1 = {1,2,3,4}
+test_set2 = {1,2,3,4}
+test_set1.issubset(test_set2)
+test_set2.issubset(test_set1)
+test_set1.issuperset(test_set2)
+test_set2.issuperset(test_set1)
+
+//Example 8.25
+test_set1 = {1,2,3,4}
+test_set2 = {1,2,3,4,5,6,7}
+test_set1.isdisjoint(test_set2)
+test_set2.isdisjoint(test_set1)
+test_set1 = {1,2,3,4}
+test_set2 = {5,6,7}
+test_set1.isdisjoint(test_set2)
+test_set2.isdisjoint(test_set1)
+
+//Answer 2
+test_set = {1,2,3,4}
+1 in test_set
+
+//Answer 3
+test_set = {1,2,3,4}
+i=0
+for val in test_set:
+    if val==4:
+        break
+    i+=1
+
+print(i)
+
+//Answer 4
+if(set1.isdisjoint(set2)==False):
+    set1.intersection(set2)
+
+//Answer 5
+set1.difference_update(set1.intersection(set2))
+
+//Answer 6
+if(len(list1)>len(set(list1))):
+    print("Duplicate values exist")
+else:
+    print("Duplicate values do not exist") 
+
+//Answer 7
+zip(set1,set2)
+
+//Answer 8
+if(set1==set2):
+    print(“Both sets are equal”)
+elif(set1<set2):
+    print(“set1 is subset of set2”)
+elif(set1>set2):
+    print(“set1 is superset of set2”)
+else:
+    print(“Sets has no relation”)

@@ -1,0 +1,235 @@
+//Example 10.1
+stack= []
+stack
+type(stack)
+def push(stack, val):
+    stack.append(val)
+
+push(stack,1)
+stack
+push(stack,2)
+stack
+push(stack,3)
+stack
+def peek(stack):
+    return stack[len(stack)-1]
+
+peek(stack)
+def peek(stack):
+    return stack[-1]
+
+peek(stack)
+stack
+stack.pop()
+peek(stack)
+stack
+stack.pop()
+stack.pop()
+stack
+def isEmpty(stack):
+    return (len(stack)==0)
+
+isEmpty(stack)
+push(stack,1)
+stack
+isEmpty(stack)
+
+class stack:
+    def __init__(self):
+        self.list = []
+    def isEmpty(self):
+        return len(self.list) == 0
+    def push(self,val):
+        self.list.append(val)
+    def pop(self):
+        return self.list.pop()
+    def peek(self):
+        return self.list[len(self.list)-1]
+    def print(self):
+        return self.list
+
+def peek(self):
+    return self.list[-1]
+
+s = stack()
+s.print()
+s.isEmpty()
+s.push(21)
+s.print()
+s.isEmpty()
+s.peek()
+s.push(12)
+s.print()
+s.peek()
+s.pop()
+s.print()
+s.pop()
+s.print()
+s.isEmpty()
+
+//Example 10.2
+from collections import deque
+s = deque()
+s
+type(s)
+def push(s,val):
+    s.append(val)
+
+push(s,1)
+s
+push(s,2)
+s
+def peek(s):
+    return s[len(s)-1]
+
+peek(s)
+s.pop()
+s
+s.pop()
+def isEmpty(s):
+    return len(s)==0
+
+isEmpty(s)
+push(s,1)
+s
+isEmpty(s)
+from collections import deque
+class Stack:
+    def __init__(self):
+        self.stack = deque()
+    def isEmpty(self):
+        return len(self.stack) == 0
+    def push(self,val):
+        self.stack.append(val)
+    def pop(self):
+        return self.stack.pop()
+    def peek(self):
+        return self.stack[len(self.stack)-1]
+    def print(self):
+        return self.stack
+
+s = Stack()
+s.print()
+s.isEmpty()
+s.push(1)
+s.print()
+s.isEmpty()
+s.peek()
+s.pop()
+s.print()
+
+//Example 10.3
+from queue import LifoQueue
+s = LifoQueue()
+s
+type(s)
+def push(s,val):
+    s.put(val)
+
+push(s,1)
+push(s,2)
+def peek(s):
+    return s.get()
+
+peek(s)
+def pop(s):
+    return s.get()
+
+pop(s)
+def isEmpty(s):
+    return s.empty()
+
+isEmpty(s)
+push(s,1)
+isEmpty(s)
+from queue import LifoQueue
+class Stack:
+    def __init__(self):
+        self.stack = LifoQueue()
+    def isEmpty(self):
+        return self.stack.empty()
+    def push(self,val):
+        self.stack.put(val)
+    def pop(self):
+        return self.stack.get()
+    def peek(self):
+        return self.stack.get()
+
+s = Stack()
+s.isEmpty()
+s.push(1)
+s.isEmpty()
+s.pop()
+s.isEmpty()
+s.push(1)
+s.isEmpty()
+s.peek()
+s.isEmpty()
+
+//Answer 1
+class Stack:
+     def __init__(self):
+         self.list = []
+     def isEmpty(self):
+         return len(self.list) == 0
+     def push(self,val):
+         self.list.append(val)
+     def pop(self):
+         return self.list.pop()
+     def peek(self):
+         return self.list[-1]
+     def print(self):
+         return self.list
+		 
+//Answer 2
+def cal(val1,val2,op):
+      if(op=='*'):
+          return val1*val2
+      if(op=='/'):
+          return val2/val1
+      if(op=='+'):
+          return val1+val2
+      if(op=='-'):
+          return val2-val1
+
+def eval_expression(exp):
+     s = Stack()
+     for i in exp:
+         if i in '0123456789':
+             s.push(i)
+         else:
+             val1=int(s.pop())
+             val2=int(s.pop())
+             out=cal(val1,val2,i)
+             s.push(out)
+     return s.pop()
+
+//Answer 3
+def reverse_string(input):
+     n = len(input)
+     s=Stack()
+     for i in range(0,n):
+         s.push(input[i])
+     output = ""
+     while s.isEmpty()==False:
+         output=output+s.pop()
+     return output
+
+//Answer 4
+def check_parenthesis(input):
+     open_par_list = ['[','{','(']
+     close_par_list = [']','}',')']
+     s=Stack()
+     for i in input:
+         if i in open_par_list:
+             s.push(i)
+         elif i in close_par_list:
+             index = close_par_list.index(i)
+             if(s.isEmpty()):
+                 return "Unbalanced"
+             elif open_par_list[index]==s.peek():
+                 s.pop()
+     if(s.isEmpty()):
+         return "Balanced"
+     else:
+         return "Unbalanced"

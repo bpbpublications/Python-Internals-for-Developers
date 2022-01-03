@@ -1,0 +1,571 @@
+//Example 14.1
+class Node():
+    def __init__(self,val):
+        self.val = val
+        self.next = None
+	
+class SLinkedList():
+    def __init__(self):
+        self.headVal = None
+    def add_node(self,node):
+        tempNode = self.headVal
+        while(tempNode.next!=None):
+            tempNode = tempNode.next
+        tempNode.next = node
+
+V1 = SLinkedList()
+V1.headVal=Node(1)
+V1.add_node(Node(2))
+V2 = SLinkedList()
+V2.headVal=Node(2)
+V2.add_node(Node(3))
+V2.add_node(Node(6))
+V3 = SLinkedList()
+V3.headVal=Node(3)
+V3.add_node(Node(1))
+V4 = SLinkedList()
+V4.headVal=Node(4)
+V4.add_node(Node(3))
+V5 = SLinkedList()
+V5.headVal=Node(5)
+V5.add_node(Node(4))
+V6 = SLinkedList()
+V6.headVal=Node(6)
+V6.add_node(Node(5))
+	
+adjList = [V1,V2,V3,V4,V5,V6]
+adjList
+
+for i in range(0,6):
+    tempNode = adjList[i].headVal
+    print('Vertex:', tempNode.val)
+    while(tempNode.next!=None):
+        tempNode = tempNode.next
+        print('Connected Vertex:', tempNode.val)
+
+//Example 14.2
+graph = {1:[2],2:[3,6],3:[1],4:[3],5:[4],6:[5]}
+graph
+def bfs(startVertex):
+    visited=[]
+    q=[]
+    visited.append(startVertex)
+    q.append(startVertex)
+    while (len(q)>0):
+        val=q.pop(0)
+        print(val)
+        for nextVal in graph[val]:
+            if nextVal not in visited:
+                visited.append(nextVal)
+                q.append(nextVal)
+
+bfs(1)
+bfs(2)
+graph={1:[2,3],2:[1,3,6],3:[1,2,4],4:[3,5],5:[4,6],6:[2,5]}
+graph
+bfs(1)
+bfs(2)
+
+//Example 14.3
+def bfs(startIndex):
+    visited=[]
+    q=[]
+    visited.append(startIndex)
+    q.append(startIndex)
+    while (len(q)>0):
+        current=q.pop(0)
+        print(current+1)
+        for i in range(0,6):
+            if(graph[current][i]==1):
+                if i not in visited:
+                    visited.append(i)
+                    q.append(i)
+
+graph = [[0,1,0,0,0,0],[0,0,1,0,0,1],[1,0,0,0,0,0],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0]]
+graph
+bfs(0)
+bfs(1)
+graph = [[0,1,1,0,0,0],[1,0,1,0,0,1],[1,1,0,1,0,0],[0,0,1,0,1,0],[0,0,0,1,0,1],[0,1,0,0,1,0]]
+graph
+bfs(0)
+bfs(1)
+
+//Example 14.4
+V1 = SLinkedList()
+V1.headVal=Node(1)
+V1.add_node(Node(2))
+V2 = SLinkedList()
+V2.headVal=Node(2)
+V2.add_node(Node(3))
+V2.add_node(Node(6))
+V3 = SLinkedList()
+V3.headVal=Node(3)
+V3.add_node(Node(1))
+V4 = SLinkedList()
+V4.headVal=Node(4)
+V4.add_node(Node(3))
+V5 = SLinkedList()
+V5.headVal=Node(5)
+V5.add_node(Node(4))
+V6 = SLinkedList()
+V6.headVal=Node(6)
+V6.add_node(Node(5))
+graph = [V1,V2,V3,V4,V5,V6]
+def bfs(startIndex):
+    visited=[]
+    q=[]
+    visited.append(graph[startIndex].headVal.val)
+    q.append(startIndex)
+    while(len(q)>0):
+        current=graph[q.pop(0)].headVal
+        print(current.val)
+        while(current.next!=None):
+            if current.next.val not in visited:
+                visited.append(current.next.val)
+                q.append(current.next.val-1)
+            current = current.next
+	
+bfs(0)
+bfs(1)
+
+//Example 14.5
+graph = {1:[2],2:[3,6],3:[1],4:[3],5:[4],6:[5]}
+graph
+def dfs(vertex):
+    if vertex not in visited:
+        print(vertex)
+        visited.append(vertex)
+        for nextVal in graph[vertex]:
+            dfs(nextVal)
+	
+visited=[]
+dfs(1)
+visited=[]
+dfs(2)
+graph={1:[2,3],2:[1,3,6],3:[1,2,4],4:[3,5],5:[4,6],6:[2,5]}
+graph
+visited=[]
+dfs(1)
+visited=[]
+dfs(2)
+
+//Example 14.6
+def dfs(index):
+    if index not in visited:
+        print(index+1)
+        visited.append(index)
+        for i in range(0,6):
+            if(graph[index][i]==1):
+                dfs(i)
+
+graph = [[0,1,0,0,0,0],[0,0,1,0,0,1],[1,0,0,0,0,0],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0]]
+visited=[]
+dfs(0)
+visited=[]
+dfs(1)
+graph = [[0,1,1,0,0,0],[1,0,1,0,0,1],[1,1,0,1,0,0],[0,0,1,0,1,0],[0,0,0,1,0,1],[0,1,0,0,1,0]]
+visited=[]
+dfs(0)
+visited=[]
+dfs(1)
+
+//Example 14.7
+V1 = SLinkedList()
+V1.headVal=Node(1)
+V1.add_node(Node(2))
+V2 = SLinkedList()
+V2.headVal=Node(2)
+V2.add_node(Node(3))
+V2.add_node(Node(6))
+V3 = SLinkedList()
+V3.headVal=Node(3)
+V3.add_node(Node(1))
+V4 = SLinkedList()
+V4.headVal=Node(4)
+V4.add_node(Node(3))
+V5 = SLinkedList()
+V5.headVal=Node(5)
+V5.add_node(Node(4))
+V6 = SLinkedList()
+V6.headVal=Node(6)
+V6.add_node(Node(5))
+graph = [V1,V2,V3,V4,V5,V6]
+def dfs(index):
+    if index not in visited:
+        print(index+1)
+        visited.append(index)
+        current = graph[index].headVal
+        while(current.next!=None):
+            dfs(current.next.val-1)
+            current = current.next
+	
+visited=[]
+dfs(0)
+visited=[]
+dfs(1)
+
+//Example 14.8
+graph = {1:[2],2:[3,6],3:[1],4:[3],5:[4],6:[5]}
+graph
+graph[4] = [3,7]
+graph[7] = [1]
+graph
+graph = [[0,1,0,0,0,0],[0,0,1,0,0,1],[1,0,0,0,0,0],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0]]
+graph
+graph = [[0,1,0,0,0,0,0],[0,0,1,0,0,1,0],[1,0,0,0,0,0,1],[0,0,1,0,0,0,0],[0,0,0,1,0,0,0],[0,0,0,0,1,0,0],[1,0,0,0,0,0,0]]
+graph
+
+//Example 14.9
+graph = {1:[2],2:[3,6],3:[1],4:[3],5:[4],6:[5]}
+graph
+graph[4]=[3,6]
+graph
+graph = [[0,1,0,0,0,0],[0,0,1,0,0,1],[1,0,0,0,0,0],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0]]
+graph
+graph[3]=[0,0,1,0,0,1]
+graph
+
+V1 = SLinkedList()
+V1.headVal=Node(1)
+V1.add_node(Node(2))
+V2 = SLinkedList()
+V2.headVal=Node(2)
+V2.add_node(Node(3))
+V2.add_node(Node(6))
+V3 = SLinkedList()
+V3.headVal=Node(3)
+V3.add_node(Node(1))
+V4 = SLinkedList()
+V4.headVal=Node(4)
+V4.add_node(Node(3))
+V5 = SLinkedList()
+V5.headVal=Node(5)
+V5.add_node(Node(4))
+V6 = SLinkedList()
+V6.headVal=Node(6)
+V6.add_node(Node(5))
+	
+graph= [V1,V2,V3,V4,V5,V6]
+V4.add_node(Node(V6.headVal.val))
+
+//Example 14.10
+def delete(vertex):
+    for i in range(1,7):
+        if(vertex in graph[i]):
+            graph[i].remove(vertex)
+    graph.pop(vertex)
+
+graph = {1:[2],2:[3,6],3:[1],4:[3],5:[4],6:[5]}
+graph
+delete(6)
+graph
+//Adjacency matrix representation
+def delete(vertex):
+    for i in range(0,len(graph)):
+        graph[i].pop(vertex-1)
+    graph.pop(vertex-1)
+	
+graph = [[0,1,0,0,0,0],[0,0,1,0,0,1],[1,0,0,0,0,0],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0]]
+graph
+delete(6)
+graph
+//Adjacency list representation
+
+V1 = SLinkedList()
+V1.headVal=Node(1)
+V1.add_node(Node(2))
+V2 = SLinkedList()
+V2.headVal=Node(2)
+V2.add_node(Node(3))
+V2.add_node(Node(6))
+V3 = SLinkedList()
+V3.headVal=Node(3)
+V3.add_node(Node(1))
+V4 = SLinkedList()
+V4.headVal=Node(4)
+V4.add_node(Node(3))
+V5 = SLinkedList()
+V5.headVal=Node(5)
+V5.add_node(Node(4))
+V6 = SLinkedList()
+V6.headVal=Node(6)
+V6.add_node(Node(5))
+	
+graph= [V1,V2,V3,V4,V5,V6]
+def delete(index):
+    for i in range(0,len(graph)):
+        current = graph[i].headVal
+        while(current.val!= (index+1) and current.next!=None):
+            prev = current
+            current=current.next
+            if(current.val==(index+1)):
+                if(current.next!=None):
+                    prev.next = current.next
+                else:
+                    prev.next = None
+    graph.pop(index)
+	
+for i in range(0,len(graph)):
+    tempNode = graph[i].headVal
+    print('Vertex:', tempNode.val)
+    while(tempNode.next!=None):
+        tempNode = tempNode.next
+        print('Connected Vertex:', tempNode.val)
+
+delete(5)
+for i in range(0,len(graph)):
+    tempNode = graph[i].headVal
+    print('Vertex:', tempNode.val)
+    while(tempNode.next!=None):
+        tempNode = tempNode.next
+        print('Connected Vertex:', tempNode.val)
+
+//Example 14.11
+def delete(startVertex, endVertex):
+    graph[startVertex].remove(endVertex)
+	
+graph = {1:[2],2:[3,6],3:[1],4:[3],5:[4],6:[5]}
+graph
+delete(2,6)
+graph
+
+//Adjacency matrix representation
+def delete(startVertex, endVertex):
+    graph[startVertex-1][endVertex-1]=0
+	
+graph = [[0,1,0,0,0,0],[0,0,1,0,0,1],[1,0,0,0,0,0],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0]]
+graph
+delete(2,6)
+graph
+//Adjacency list representation
+V1 = SLinkedList()
+V1.headVal=Node(1)
+V1.add_node(Node(2))
+V2 = SLinkedList()
+V2.headVal=Node(2)
+V2.add_node(Node(3))
+V2.add_node(Node(6))
+V3 = SLinkedList()
+V3.headVal=Node(3)
+V3.add_node(Node(1))
+V4 = SLinkedList()
+V4.headVal=Node(4)
+V4.add_node(Node(3))
+V5 = SLinkedList()
+V5.headVal=Node(5)
+V5.add_node(Node(4))
+V6 = SLinkedList()
+V6.headVal=Node(6)
+V6.add_node(Node(5))
+	
+graph= [V1,V2,V3,V4,V5,V6]
+def delete(startVertex,endVertex):
+    current = graph[startVertex-1].headVal
+    while(current.next!=None):
+        prev = current
+        current=current.next
+        if(current.val==endVertex):
+            if(current.next!=None):
+                prev.next = current.next
+            else:
+                prev.next = None
+	
+for i in range(0,6):
+    tempNode = graph[i].headVal
+    print('Vertex:', tempNode.val)
+    while(tempNode.next!=None):
+        tempNode = tempNode.next
+        print('Connected Vertex:', tempNode.val)
+
+delete(2,6)
+for i in range(0,6):
+    tempNode = graph[i].headVal
+    print('Vertex:', tempNode.val)
+    while(tempNode.next!=None):
+        tempNode = tempNode.next
+        print('Connected Vertex:', tempNode.val)
+
+//Example 14.12
+graph = {1:[2],2:[3,6],3:[1],4:[3],5:[4],6:[5]}
+graph
+2 in graph
+1 in graph
+0 in graph
+10 in graph
+
+//Example 14.13
+graph = [[0,1,0,0,0,0],[0,0,1,0,0,1],[1,0,0,0,0,0],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0]]
+graph
+vertexList=[1,2,3,4,5,6]
+0 in vertexList
+5 in vertexList
+9 in vertexList
+2 in vertexList
+
+//Example 14.14
+V1 = SLinkedList()
+V1.headVal=Node(1)
+V1.add_node(Node(2))
+V2 = SLinkedList()
+V2.headVal=Node(2)
+V2.add_node(Node(3))
+V2.add_node(Node(6))
+V3 = SLinkedList()
+V3.headVal=Node(3)
+V3.add_node(Node(1))
+V4 = SLinkedList()
+V4.headVal=Node(4)
+V4.add_node(Node(3))
+V5 = SLinkedList()
+V5.headVal=Node(5)
+V5.add_node(Node(4))
+V6 = SLinkedList()
+V6.headVal=Node(6)
+V6.add_node(Node(5))
+	
+graph= [V1,V2,V3,V4,V5,V6]
+def search(value):
+    isFound = False
+    for i in range(0,6):
+        tempNode = graph[i].headVal
+        if(tempNode.val==value):
+            isFound = True
+            break
+    if(isFound):
+        print('Value is present in graph')
+    else:
+        print('Value is not present in graph')
+	
+search(1)
+search(0)
+search(8)
+search(5)
+
+//Example 14.15
+graph = {1:[2],2:[3,6],3:[1],4:[3],5:[4],6:[5]}
+graph
+reversedGraph={}
+def reverse():
+    for k in graph.keys():
+        list=[]
+        for k1 in graph.keys():
+            if k in graph[k1]:
+                list.append(k1)
+        reversedGraph[k]=list
+	
+reverse()
+reversedGraph
+
+//Example 14.16
+graph = [[0,1,0,0,0,0],[0,0,1,0,0,1],[1,0,0,0,0,0],[0,0,1,0,0,0],[0,0,0,1,0,0],[0,0,0,0,1,0]]
+graph
+
+reversedGraph=[]
+for i in range(0,len(graph)):
+    list=[]
+    for j in range(0,len(graph)):
+        list.append(0)
+    reversedGraph.append(list)
+	
+reversedGraph
+def reverse():
+    for i in range(0,len(graph)):
+        for j in range(0,len(graph)):
+            if(graph[i][j]==1):
+                reversedGraph[j][i]=1
+	
+reverse()
+reversedGraph
+
+//Example 14.17
+class Node():
+    def __init__(self,val):
+        self.val = val
+        self.next = None
+	
+class SLinkedList():
+    def __init__(self):
+        self.headVal = None
+    def add_node(self,node):
+        tempNode = self.headVal
+        while(tempNode.next!=None):
+            tempNode = tempNode.next
+        tempNode.next = node
+
+V1 = SLinkedList()
+V1.headVal=Node(1)
+V1.add_node(Node(2))
+V2 = SLinkedList()
+V2.headVal=Node(2)
+V2.add_node(Node(3))
+V2.add_node(Node(6))
+V3 = SLinkedList()
+V3.headVal=Node(3)
+V3.add_node(Node(1))
+V4 = SLinkedList()
+V4.headVal=Node(4)
+V4.add_node(Node(3))
+V5 = SLinkedList()
+V5.headVal=Node(5)
+V5.add_node(Node(4))
+V6 = SLinkedList()
+V6.headVal=Node(6)
+V6.add_node(Node(5))
+	
+graph = [V1,V2,V3,V4,V5,V6]
+
+for i in range(0,6):
+    tempNode = graph[i].headVal
+    print('Vertex:', tempNode.val)
+    while(tempNode.next!=None):
+        tempNode = tempNode.next
+        print('Connected Vertex:', tempNode.val)
+
+def reverse():
+    for i in range(0,len(graph)):
+        vertex = SLinkedList()
+        vertex.headVal = Node(graph[i].headVal.val)
+        for j in range(0,len(graph)):
+            tempNode = graph[j].headVal
+            while(tempNode.next!=None):
+                tempNode=tempNode.next
+                if(tempNode.val==vertex.headVal.val):
+                    vertex.add_node(Node(graph[j].headVal.val))
+        reversedGraph.append(vertex)
+	
+reversedGraph=[]
+reverse()
+for i in range(0,6):
+    tempNode = reversedGraph[i].headVal
+    print('Vertex:', tempNode.val)
+    while(tempNode.next!=None):
+        tempNode = tempNode.next
+        print('Connected Vertex:', tempNode.val)
+
+//Answer 1
+def noOfPaths(src,dest,visited,count):
+    visited.append(src)
+    if(src==dest):
+        count[0]+=1
+    else:
+        for val in graph[src]:
+            if val not in visited:
+                noOfPaths(val,dest,visited,count)
+    visited.remove(src)
+	
+visited = []
+graph = {1: [2, 4], 2: [1, 6], 3: [5], 4: [3, 6], 5: [1], 6: [3]}
+count = [0]
+noOfPaths(1,6,visited,count)
+print(count[0])
+
+//Answer 2
+graph1 = graph
+
+//Answer 3
+graph1={}
+for key in graph.keys():
+    list=[]
+    for val in graph[key]:
+        list.append(val)
+    graph1[key] = list

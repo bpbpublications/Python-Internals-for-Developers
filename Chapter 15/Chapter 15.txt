@@ -1,0 +1,544 @@
+//Example 15.1
+class Node():
+    def __init__(self,val):
+        self.val = val
+        self.next = None
+
+class SLinkedList():
+    def __init__(self):
+        self.headVal = None
+    def add_node(self,node):
+        tempNode = self.headVal
+        while(tempNode.next!=None):
+            tempNode = tempNode.next
+        tempNode.next = node
+
+class HashMap():
+    def __init__(self,size):
+        self.size = size
+        self.list=[]
+        for i in range(0,size):
+            self.list.append(None)
+    def insert_data(self,val):
+        index=val%self.size
+        if(self.list[index]==None):
+            self.list[index]=SLinkedList()
+            self.list[index].headVal=Node(val)
+        else:
+            self.list[index].add_node(Node(val))
+
+map=HashMap(9)
+map
+map.insert_data(8)
+map.list
+map.insert_data(9)
+map.list
+map.insert_data(17)
+map.list
+map.list[8].headVal.val
+map.list[8].headVal.next.val
+map.list[0].headVal.val
+map.insert_data(18)
+map.list[0].headVal.next.val
+
+//Example 15.2
+for key in map.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            print(tempNode.val)
+            tempNode=tempNode.next
+
+//Example 15.3
+class HashMap():
+    def __init__(self,size):
+        self.size = size
+        self.list=[]
+        for i in range(0,size):
+            self.list.append(None)
+    def insert_data(self,val):
+        index=val%self.size
+        if(self.list[index]==None):
+            self.list[index]=SLinkedList()
+            self.list[index].headVal=Node(val)
+        else:
+            self.list[index].add_node(Node(val))
+    def delete_data(self,val):
+        index=val%self.size
+        if(self.list[index].headVal.val==val):
+            self.list[index].headVal=self.list[index].headVal.next
+            return
+        prevNode = self.list[index].headVal
+        tempNode=prevNode.next
+        while(tempNode!=None):
+            if(tempNode.val==val):
+                prevNode.next = tempNode.next
+            prevNode = tempNode
+            tempNode = tempNode.next
+
+map=HashMap(9)
+map
+map.insert_data(8)
+map.list
+map.insert_data(9)
+map.list
+map.insert_data(17)
+map.list
+map.list[8].headVal.val
+map.list[8].headVal.next.val
+map.list[0].headVal.val
+map.insert_data(18)
+map.list[0].headVal.next.val
+map.delete_data(8)
+map.list[8].headVal.val
+map.list[8].headVal.next.val
+map.delete_data(18)
+map.list[0].headVal.val
+map.list[0].headVal.next.val
+
+//Example 15.4
+class HashMap():
+    def __init__(self,size):
+        self.size = size
+        self.list=[]
+        for i in range(0,size):
+            self.list.append(None)
+    def insert_data(self,val):
+        index=val%self.size
+        if(self.list[index]==None):
+            self.list[index]=SLinkedList()
+            self.list[index].headVal=Node(val)
+        else:
+            self.list[index].add_node(Node(val))
+    def delete_data(self,val):
+        index=val%self.size
+        if(self.list[index].headVal.val==val):
+            self.list[index].headVal=self.list[index].headVal.next
+        prevNode = self.list[index].headVal
+        tempNode=prevNode.next
+        while(tempNode!=None):
+            print(tempNode.val)
+            if(tempNode.val==val):
+                prevNode.next = tempNode.next
+            prevNode = tempNode
+            tempNode = tempNode.next
+    def search_data(self,val):
+        index=val%self.size
+        tempNode=None
+        if(self.list[index]!=None):
+            tempNode=self.list[index].headVal
+        isFound=False
+        while(tempNode!=None):
+            if(tempNode.val==val):
+                isFound=True
+                break
+            tempNode=tempNode.next
+        if(isFound):
+            print("Value found at ", index)
+        else:
+            print("Value not present in HashMap")
+
+map=HashMap(9)
+map
+map.insert_data(8)
+map.list
+map.insert_data(9)
+map.list
+map.insert_data(17)
+map.list
+map.list[8].headVal.val
+map.list[8].headVal.next.val
+map.list[0].headVal.val
+map.insert_data(18)
+map.list[0].headVal.next.val
+map.search_data(8)
+map.search_data(18)
+map.search_data(10)
+
+//Example 15.5
+def insertionSort(list1):
+    sortedList = SLinkedList()
+    currentNode = list1.headVal
+    while (currentNode != None):
+        nextNode = currentNode.next
+        sortedList.headVal = insert(sortedList.headVal, currentNode)
+        currentNode = nextNode  
+    list1.headVal = sortedList.headVal  
+
+def insert(headVal, newNode):
+    currentNode = None
+    if (headVal == None or headVal.val >= newNode.val):
+        newNode.next = headVal
+        headVal = newNode
+    else:
+        currentNode = headVal
+        while (currentNode.next != None and
+            currentNode.next.val < newNode.val):
+            currentNode = currentNode.next
+        newNode.next = currentNode.next
+        currentNode.next = newNode
+    return headVal
+
+map=HashMap(9)
+map.insert_data(18)
+map.insert_data(17)
+map.insert_data(9)
+map.insert_data(8)
+
+for key in map.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            print(tempNode.val)
+            tempNode=tempNode.next
+
+for list1 in map.list:
+    if list1!=None:
+         insertionSort(list1)
+
+for key in map.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            print(tempNode.val)
+            tempNode=tempNode.next
+
+//Example 15.6
+class HashMap():
+    def __init__(self,size):
+        self.size = size
+        self.list=[]
+        for i in range(0,size):
+            self.list.append(None)
+    def insert_data(self,val):
+        index=val%self.size
+        if(self.list[index]==None):
+            self.list[index]=SLinkedList()
+            self.list[index].headVal=Node(val)
+        else:
+            self.list[index].add_node(Node(val))
+    def delete_data(self,val):
+        index=val%self.size
+        if(self.list[index].headVal.val==val):
+            self.list[index].headVal=self.list[index].headVal.next
+        prevNode = self.list[index].headVal
+        tempNode=prevNode.next
+        while(tempNode!=None):
+            print(tempNode.val)
+            if(tempNode.val==val):
+                prevNode.next = tempNode.next
+            prevNode = tempNode
+            tempNode = tempNode.next
+    def search_data(self,val):
+        index=val%self.size
+        tempNode=None
+        if(self.list[index]!=None):
+            tempNode=self.list[index].headVal
+        isFound=False
+        while(tempNode!=None):
+            if(tempNode.val==val):
+                isFound=True
+                break
+            tempNode=tempNode.next
+        if(isFound):
+            print("Value found at ", index)
+        else:
+            print("Value not present in HashMap")
+    def count_data(self,val):
+        index=val%self.size
+        count=0
+        tempNode=None
+        if(self.list[index]!=None):
+            tempNode=self.list[index].headVal
+        while(tempNode!=None):
+            if(tempNode.val==val):
+                count+=1
+            tempNode=tempNode.next
+        print(val," exists ", count, " times in HashMap.")
+
+map=HashMap(9)
+map.insert_data(8)
+map.insert_data(9)
+map.insert_data(17)
+map.insert_data(18)
+map.insert_data(8)
+map.count_data(8)
+map.count_data(17)
+
+//Example 15.7
+class HashMap():
+    def __init__(self,size):
+        self.size = size
+        self.list=[]
+        for i in range(0,size):
+            self.list.append(None)
+    def insert_data(self,val):
+        index=val%self.size
+        if(self.list[index]==None):
+            self.list[index]=SLinkedList()
+            self.list[index].headVal=Node(val)
+        else:
+            self.list[index].add_node(Node(val))
+    def delete_data(self,val):
+        index=val%self.size
+        if(self.list[index].headVal.val==val):
+            self.list[index].headVal=self.list[index].headVal.next
+        prevNode = self.list[index].headVal
+        tempNode=prevNode.next
+        while(tempNode!=None):
+            print(tempNode.val)
+            if(tempNode.val==val):
+                prevNode.next = tempNode.next
+            prevNode = tempNode
+            tempNode = tempNode.next
+    def search_data(self,val):
+        index=val%self.size
+        tempNode=None
+        if(self.list[index]!=None):
+            tempNode=self.list[index].headVal
+        isFound=False
+        while(tempNode!=None):
+            if(tempNode.val==val):
+                isFound=True
+                break
+            tempNode=tempNode.next
+        if(isFound):
+            print("Value found at ", index)
+        else:
+            print("Value not present in HashMap")
+    def count_data(self,val):
+        index=val%self.size
+        count=0
+        tempNode=None
+        if(self.list[index]!=None):
+            tempNode=self.list[index].headVal
+        while(tempNode!=None):
+            if(tempNode.val==val):
+                count+=1
+            tempNode=tempNode.next
+        print(val," exists ", count, " times in HashMap.")
+    def merge(self,map):
+        size=0
+        if(self.size>map.size):
+            size = self.size
+        else:
+            size=map.size
+        for index in range(0,size):
+            if(index>=map.size or map.list[index]==None):
+                continue
+            if(index>=self.size):
+                self.list.append(map.list[index])
+            elif(self.list[index]==None):
+                self.list[index]=map.list[index]
+            else:
+                tempNode = self.list[index].headVal
+                while(tempNode.next!=None):
+                    tempNode = tempNode.next
+                tempNode.next = map.list[index].headVal
+
+map=HashMap(9)
+map.insert_data(8)
+map.insert_data(9)
+map.insert_data(17)
+map.insert_data(18)
+map1=HashMap(9)
+map1.insert_data(8)
+map1.insert_data(10)
+map.merge(map1)
+for key in map.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            print(tempNode.val)
+            tempNode=tempNode.next
+
+
+//Example 15.8
+class HashMap():
+    def __init__(self,size):
+        self.size = size
+        self.list=[]
+        for i in range(0,size):
+            self.list.append(None)
+    def insert_data(self,val):
+        index=val%self.size
+        if(self.list[index]==None):
+            self.list[index]=SLinkedList()
+            self.list[index].headVal=Node(val)
+        else:
+            self.list[index].add_node(Node(val))
+    def delete_data(self,val):
+        index=val%self.size
+        if(self.list[index].headVal.val==val):
+            self.list[index].headVal=self.list[index].headVal.next
+        prevNode = self.list[index].headVal
+        tempNode=prevNode.next
+        while(tempNode!=None):
+            print(tempNode.val)
+            if(tempNode.val==val):
+                prevNode.next = tempNode.next
+            prevNode = tempNode
+            tempNode = tempNode.next
+    def search_data(self,val):
+        index=val%self.size
+        tempNode=None
+        if(self.list[index]!=None):
+            tempNode=self.list[index].headVal
+        isFound=False
+        while(tempNode!=None):
+            if(tempNode.val==val):
+                isFound=True
+                break
+            tempNode=tempNode.next
+        if(isFound):
+            print("Value found at ", index)
+        else:
+            print("Value not present in HashMap")
+    def count_data(self,val):
+        index=val%self.size
+        count=0
+        tempNode=None
+        if(self.list[index]!=None):
+            tempNode=self.list[index].headVal
+        while(tempNode!=None):
+            if(tempNode.val==val):
+                count+=1
+            tempNode=tempNode.next
+    def merge(self,map):
+        for list1 in map.list:
+            if(list1!=None):
+                tempNode = list1.headVal
+                while(tempNode!=None):
+                    self.insert_data(tempNode.val)
+                    tempNode = tempNode.next
+
+map=HashMap(9)
+map.insert_data(8)
+map.insert_data(9)
+map.insert_data(17)
+map.insert_data(18)
+map1=HashMap(9)
+map1.insert_data(8)
+map1.insert_data(10)
+map.merge(map1)
+for key in map.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            print(tempNode.val)
+            tempNode=tempNode.next
+
+map.search_data(10) 
+
+//Example 15.9
+for key in map.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            print(tempNode.val)
+            tempNode=tempNode.next
+
+map1=map
+for key in map1.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            print(tempNode.val)
+            tempNode=tempNode.next
+	
+map1.insert_data(10)
+for key in map.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            print(tempNode.val)
+            tempNode=tempNode.next
+
+for key in map1.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            print(tempNode.val)
+            tempNode=tempNode.next
+
+//Example 15.10
+map1=HashMap(9)
+for key in map.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            map1.insert_data(tempNode.val)
+            tempNode=tempNode.next
+
+for key in map1.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            print(tempNode.val)
+            tempNode=tempNode.next
+
+map1.insert_data(10)
+
+for key in map1.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            print(tempNode.val)
+            tempNode=tempNode.next
+
+for key in map.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            print(tempNode.val)
+            tempNode=tempNode.next
+
+//Example 15.11
+count=0
+for key in map.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            count+=1
+            tempNode=tempNode.next
+
+print("Total number of elements are:", count)
+
+//Example 15.12
+max=map.list[0].headVal.val
+min=map.list[0].headVal.val
+
+for key in map.list:
+    if key!=None:
+        tempNode = key.headVal
+        while(tempNode!=None):
+            if(max<tempNode.val):
+                max=tempNode.val
+            if(min>tempNode.val):
+                min=tempNode.val
+            tempNode=tempNode.next
+
+max
+min
+
+//Answer 3
+for key in map.list:
+    if key!=None:
+        currentNode = key.headVal
+        prevNode = None
+        while(currentNode!=None):
+            nextNode = currentNode.next
+            currentNode.next = prevNode
+            prevNode = currentNode
+            currentNode = nextNode
+        key.headVal = prevNode
+
+//Answer 4
+map=[None,None,None,None,None,None,None,None,None]
+size=9
+def insert(val,map):
+    index=val%size
+    if(map[index]!=None):
+        map[index].append(val)
+    else:
+        map[index]=[val]

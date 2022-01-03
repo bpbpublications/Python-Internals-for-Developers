@@ -1,0 +1,610 @@
+//Example 13.1
+class Node():
+    def __init__(self,val):
+        self.val = val
+        self.next = None
+
+//Example 13.2
+class Node():
+    def __init__(self,val):
+        self.val = val
+        self.next = None
+        self.previous = None
+		
+//Example 13.3
+class SLinkedList():
+    def __init__(self):
+        self.headVal = None
+    def add_node(self,node):
+        tempNode = self.headVal
+        while(tempNode.next!=None):
+            tempNode = tempNode.next
+        tempNode.next = node
+
+list1 = SLinkedList()
+list1.headVal = Node("1")
+node1 = Node("2")
+node2 = Node("3")
+list1.add_node(node1)
+list1.add_node(node2)
+node2.val
+node1.val
+node1.next.val
+list1.headVal.val
+
+//Example 13.4
+class DLinkedList():
+    def __init__(self):
+        self.headVal = None
+    def add_node(self,node):
+        tempNode = self.headVal
+        while(tempNode.next!=None):
+            tempNode = tempNode.next
+        tempNode.next = node
+        node.previous = tempNode
+	
+list1 = DLinkedList()
+list1.headVal = Node("1")
+node1 = Node("2")
+node2 = Node("3")
+list1.add_node(node1)
+list1.add_node(node2)
+list1.headVal.val
+list1.headVal.next.val
+node1.val
+node1.next.val
+node1.previous.val
+node2.next
+node2.previous.val
+
+//Example 13.5
+tempNode = list1.headVal
+while(tempNode!=None):
+     print(tempNode.val)
+     tempNode = tempNode.next
+
+//Example 13.6
+tempNode = list1.headVal
+node0 = Node("0")
+node0.next = tempNode
+list1.headVal = node0
+list1.headVal.val
+list1.headVal.next.val
+
+//Example 13.7
+tempNode = list1.headVal
+node0 = Node("0")
+tempNode.previous = node0
+node0.next = tempNode
+list1.headVal = node0
+list1.headVal.val
+list1.headVal.next.val
+
+//Example 13.8
+tempNode = list1.headVal
+while(tempNode.val!='2'):
+     tempNode = tempNode.next
+
+node0 = Node("0")
+node0.next = tempNode.next
+tempNode.next = node0
+
+//Example 13.9
+tempNode = list1.headVal
+while(tempNode.val!='2'):
+     tempNode = tempNode.next
+
+node0 = Node("0")
+node0.next=tempNode.next
+node0.previous = tempNode
+tempNode.next = node0
+node0.next.previous = node0
+
+//Example 13.10
+tempNode = list1.headVal
+while(tempNode.next!=None):
+     tempNode = tempNode.next
+
+node0 = Node("0")
+tempNode.next = node0
+
+//Example 13.11
+tempNode = list1.headVal
+while(tempNode.next!=None):
+     tempNode = tempNode.next
+
+node0 = Node("0")
+node0.previous = tempNode
+tempNode.next = node0
+
+//Example 13.12
+tempNode = list1.headVal
+list1.headVal=tempNode.next
+tempNode = None
+list1.headVal.val
+list1.headVal.next.val
+
+//Example 13.13
+tempNode = list1.headVal
+list1.headVal=tempNode.next
+list1.headVal.previous=None
+tempNode=None
+list1.headVal.val
+list1.headVal.next.val
+
+//Example 13.14
+tempNode = list1.headVal
+while(tempNode.val!='1'):
+     tempNode = tempNode.next
+
+deletedNode = tempNode.next
+tempNode.next = deletedNode.next
+deletedNode = None
+
+//Example 13.15
+tempNode = list1.headVal
+while(tempNode.val!='1'):
+     tempNode = tempNode.next
+
+deletedNode = tempNode.next
+tempNode.next = deletedNode.next
+deletedNode.next.previous = tempNode
+deletedNode = None
+
+//Example 13.16
+tempNode = list1.headVal
+while(tempNode.next.next!=None):
+     tempNode = tempNode.next
+
+deletedNode = tempNode.next
+tempNode.next = None
+deletedNode = None
+
+//Example 13.17
+def search(list1, val):
+    tempNode = list1.headVal
+    index = 0
+    isFound = False
+    while(tempNode!=None):
+        if(tempNode.val==val):
+            isFound = True
+            break
+        index = index+1
+        tempNode = tempNode.next
+    if(isFound):
+        print("Value found at index: ", index)
+    else:
+        print("Value not present in Linked List")
+	
+search(list1, '3')
+
+//Example 13.18
+def insertionSort(list1):
+    sortedList = SLinkedList()
+    currentNode = list1.headVal
+    while (currentNode != None):
+        nextNode = currentNode.next
+        sortedList.headVal = insert(sortedList.headVal, currentNode)
+        currentNode = nextNode  
+    list1.headVal = sortedList.headVal  
+
+def insert(headVal, newNode):
+    currentNode = None
+    if (headVal == None or headVal.val >= newNode.val):
+        newNode.next = headVal
+        headVal = newNode
+    else:
+        currentNode = headVal
+        while (currentNode.next != None and
+            currentNode.next.val < newNode.val):
+            currentNode = currentNode.next
+        newNode.next = currentNode.next
+        currentNode.next = newNode
+    return headVal
+
+list1 = SLinkedList()
+list1.headVal = Node(1)
+list1.add_node(Node(10))
+list1.add_node(Node(2))
+list1.add_node(Node(5))
+list1.add_node(Node(8))
+list1.add_node(Node(3))
+list1.add_node(Node(0))
+list1.add_node(Node(9))
+insertionSort(list1)
+
+//Example 13.19
+def insertionSort(list1):
+    sortedList = DLinkedList()
+    currentNode = list1.headVal
+    while (currentNode != None):
+        nextNode = currentNode.next
+        sortedList.headVal = insert(sortedList.headVal, currentNode)
+        currentNode = nextNode
+    list1.headVal=sortedList.headVal
+
+def insert(headVal, newNode):
+    currentNode = None
+    if (headVal == None or headVal.val >= newNode.val):
+        currentNode = headVal
+        if(currentNode!=None):
+            newNode.previous = currentNode.previous
+            currentNode.previous = newNode
+        newNode.next = currentNode
+        headVal = newNode
+    else:
+        currentNode = headVal
+        while (currentNode.next != None and
+            currentNode.next.val < newNode.val):
+            currentNode = currentNode.next
+            newNode.previous = currentNode
+        if(currentNode.next!=None):
+            currentNode.next.previous = newNode
+        newNode.next = currentNode.next
+        currentNode.next = newNode
+    return headVal
+
+list1 = DLinkedList()
+list1.headVal = Node(1)
+list1.add_node(Node(10))
+list1.add_node(Node(2))
+list1.add_node(Node(5))
+list1.add_node(Node(8))
+list1.add_node(Node(3))
+list1.add_node(Node(0))
+list1.add_node(Node(9))
+insertionSort(list1)
+
+//Example 13.20
+list1 = SLinkedList()
+list1.headVal = Node(1)
+list1.add_node(Node(10))
+list1.add_node(Node(2))
+list1.add_node(Node(5))
+list2 = SLinkedList()
+list2.headVal = Node(4)
+list2.add_node(Node(6))
+	
+node1 = list1.headVal
+while(node1!=None):
+    print(node1.val)
+    node1=node1.next
+
+node2 = list2.headVal
+while(node2!=None):
+    print(node2.val)
+    node2=node2.next
+
+node1=list1.headVal
+while(node1.next!=None):
+    node1=node1.next
+
+node1.val
+node1.next=list2.headVal
+node1 = list1.headVal
+while(node1!=None):
+    print(node1.val)
+    node1=node1.next
+
+//Example 13.21
+list1 = DLinkedList()
+list1.headVal = Node(1)
+list1.add_node(Node(10))
+list1.add_node(Node(2))
+list1.add_node(Node(5))
+list2 = DLinkedList()
+list2.headVal = Node(4)
+list2.add_node(Node(6))
+
+node1 = list1.headVal
+while(node1!=None):
+    print(node1.val)
+    node1=node1.next
+
+node2 = list2.headVal
+while(node2!=None):
+    print(node2.val)
+    node2=node2.next
+
+node1=list1.headVal
+while(node1.next!=None):
+    node1=node1.next
+
+node1.val
+
+node1.next=list2.headVal
+node1.next.previous=node1
+node1 = list1.headVal
+while(node1!=None):
+    print(node1.val)
+    node1=node1.next
+
+//Example 13.22
+list1 = SLinkedList()
+list1.headVal = Node(1)
+list1.add_node(Node(10))
+list1.add_node(Node(5))
+list1.add_node(Node(2))
+list1.add_node(Node(5))
+list1.add_node(Node(5))
+
+node1 = list1.headVal
+while(node1!=None):
+    print(node1.val)
+    node1=node1.next
+
+node1 = list1.headVal
+count=0
+while(node1!=None):
+    if(node1.val==5):
+        count=count+1
+    node1=node1.next
+
+count
+
+//Example 13.23
+list1 = SLinkedList()
+list1.headVal = Node(1)
+list1.add_node(Node(10))
+list1.add_node(Node(2))
+list1.add_node(Node(5))
+list1.add_node(Node(8))
+list1.add_node(Node(3))
+list1.add_node(Node(0))
+list1.add_node(Node(9))
+
+node1=list1.headVal
+while(node1!=None):
+    print(node1.val)
+    node1 = node1.next
+
+reversedList = SLinkedList()
+currentNode = list1.headVal
+prevNode = None
+while(currentNode!=None):
+    nextNode = currentNode.next
+    currentNode.next = prevNode
+    prevNode = currentNode
+    currentNode = nextNode
+	
+reversedList.headVal = prevNode
+
+node2=reversedList.headVal
+while(node2!=None):
+    print(node2.val)
+    node2 = node2.next
+
+//Example 13.24
+list1 = DLinkedList()
+list1.headVal = Node(1)
+list1.add_node(Node(10))
+list1.add_node(Node(2))
+list1.add_node(Node(5))
+list1.add_node(Node(8))
+list1.add_node(Node(3))
+list1.add_node(Node(0))
+list1.add_node(Node(9))
+
+node1=list1.headVal
+while(node1!=None):
+    print(node1.val)
+    node1 = node1.next
+
+reversedList = DLinkedList()
+currentNode = list1.headVal
+prevNode = None
+while(currentNode!=None):
+    prevNode = currentNode.previous
+    currentNode.previous = currentNode.next
+    currentNode.next = prevNode
+    currentNode = currentNode.previous
+	
+if(prevNode!=None):
+   reversedList.headVal = prevNode.previous
+
+node2=reversedList.headVal
+while(node2!=None):
+    print(node2.val)
+    node2 = node2.next
+
+//Example 13.25
+list1 = SLinkedList()
+list1.headVal = Node(1)
+list1.add_node(Node(10))
+list1.add_node(Node(2))
+list1.add_node(Node(5))
+list1.add_node(Node(8))
+list1.add_node(Node(3))
+list1.add_node(Node(0))
+list1.add_node(Node(9))
+tempNode1 = list1.headVal
+list2 = SLinkedList()
+list2.headVal = Node(list1.headVal.val)
+while(tempNode1.next!=None):
+   tempNode1 = tempNode1.next
+   list2.add_node(Node(tempNode1.val))
+	
+tempNode2 = list2.headVal
+while(tempNode2!=None):
+   print(tempNode2.val)
+   tempNode2 = tempNode2.next
+
+list2.headVal.val=0
+list2.headVal.val
+list1.headVal.val
+
+//Example 13.26
+list3 = list1
+list3.headVal.val
+list1.headVal.val
+list3.headVal.val = 0
+list3.headVal.val
+list1.headVal.val
+
+//Example 13.27
+tempNode = list1.headVal
+count=0
+while(tempNode!=None):
+   count=count+1
+   tempNode=tempNode.next
+	
+count
+
+//Example 13.28
+list1 = SLinkedList()
+list1.headVal = Node(1)
+list1.add_node(Node(10))
+list1.add_node(Node(2))
+list1.add_node(Node(5))
+list1.add_node(Node(8))
+list1.add_node(Node(3))
+list1.add_node(Node(0))
+list1.add_node(Node(9))
+tempNode = list1.headVal
+min = list1.headVal.val
+max = list1.headVal.val
+while(tempNode.next!=None):
+    tempNode=tempNode.next
+    if(max<tempNode.val):
+        max = tempNode.val
+    if(min>tempNode.val):
+        min = tempNode.val
+
+max
+min
+
+//Answer 1
+class Node():
+    def __init__(self,val):
+        self.val = val
+        self.next = None
+
+class SLinkedList():
+    def __init__(self):
+        self.headVal = None
+    def add_node(self,node):
+        tempNode = self.headVal
+        while(tempNode.next!=None):
+            tempNode = tempNode.next
+        tempNode.next = node
+
+list1 = SLinkedList()
+list1.headVal = Node(1)
+list1.add_node(Node(10))
+list1.add_node(Node(2))
+list1.add_node(Node(5))
+list1.add_node(Node(8))
+list1.add_node(Node(3))
+list1.add_node(Node(0))
+list1.add_node(Node(9))
+
+index = 0
+tempNode = list1.headVal
+while(tempNode!=None):
+    if(index==3):
+        tempNode.val = 7
+        break
+    else:
+        index=index+1
+        tempNode = tempNode.next
+
+//Answer 2
+class Node():
+    def __init__(self,val):
+        self.val = val
+        self.next = None
+
+class SLinkedList():
+    def __init__(self):
+        self.headVal = None
+    def add_node(self,node):
+        tempNode = self.headVal
+        while(tempNode.next!=None):
+            tempNode = tempNode.next
+        tempNode.next = node
+
+list1 = SLinkedList()
+list1.headVal = Node(1)
+list1.add_node(Node(10))
+list1.add_node(Node(2))
+list1.add_node(Node(5))
+list1.add_node(Node(8))
+list1.add_node(Node(3))
+list1.add_node(Node(0))
+list1.add_node(Node(9))
+
+index = 0
+tempNode = list1.headVal
+prevNode = list1.headVal
+while(tempNode!=None):
+    if(index==3):
+        newNode = Node(7)
+        newNode.next = tempNode
+        prevNode.next = newNode
+        break
+    else:
+        index=index+1
+        prevNode = tempNode
+        tempNode = tempNode.next
+
+//Answer 3
+class Node():
+     def __init__(self,val):
+         self.val = val
+         self.next = None
+         self.previous = None
+
+class DLinkedList():
+    def __init__(self):
+        self.headVal = None
+    def add_node(self,node):
+        tempNode = self.headVal
+        while(tempNode.next!=None):
+            tempNode = tempNode.next
+        tempNode.next = node
+        node.previous = tempNode
+
+list1 = DLinkedList()
+list1.headVal = Node("1")
+node1 = Node("2")
+node2 = Node("3")
+list1.add_node(node1)
+list1.add_node(node2)
+tailNode = node2
+
+tempNode = tailNode
+while(tempNode!=None):
+    print(tempNode.val)
+    tempNode=tempNode.previous
+
+//Answer 4
+class Node():
+     def __init__(self,val):
+         self.val = val
+         self.next = None
+         self.previous = None
+
+class DLinkedList():
+    def __init__(self):
+        self.headVal = None
+    def add_node(self,node):
+        tempNode = self.headVal
+        while(tempNode.next!=None):
+            tempNode = tempNode.next
+        tempNode.next = node
+        node.previous = tempNode
+
+list1 = DLinkedList()
+list1.headVal = Node("1")
+node1 = Node("2")
+node2 = Node("3")
+list1.add_node(node1)
+list1.add_node(node2)
+
+slowPointer=list1.headVal
+fastPointer=list1.headVal
+while(slowPointer!=None and fastPointer!=None and fastPointer.next!=None):
+    slowPointer=slowPointer.next
+    fastPointer=fastPointer.next.next
+
+print("The middle element is ", slowPointer.val)
